@@ -6,3 +6,4 @@ iOS app for prediction San Francisco crime rates and probabilities.
 - Xiang (xxiao23)
 - Albus (AimBotSwitch)
 - Sahil (sahilmehta-US)
+- Alan (switchpiggy)
