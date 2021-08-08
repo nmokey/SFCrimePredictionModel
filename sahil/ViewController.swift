@@ -87,7 +87,7 @@ class ViewController: UIViewController {
 }
 
 private extension MKMapView {
-  func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {
+  func centerToLocation(location: CLLocation, regionRadius: CLLocationDistance = 7000) {
     let coordinateRegion = MKCoordinateRegion(
       center: location.coordinate,
       latitudinalMeters: regionRadius,
@@ -110,13 +110,3 @@ extension ViewController: MKMapViewDelegate {
     artwork.mapItem?.openInMaps(launchOptions: launchOptions)
   }
 }
-private extension MKMapView {
-  func centerToLocation(location: CLLocation, regionRadius: CLLocationDistance = 7000) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
-}
-
