@@ -10,6 +10,8 @@
 		494A05D023C1CAFD00A919D4 /* PublicArt.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 494A05CF23C1CAFD00A919D4 /* PublicArt.geojson */; };
 		49D5371923CC73880086C391 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5371823CC73880086C391 /* ViewController.swift */; };
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
+		65ABD56426C9ABFB007878B6 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABD56326C9ABFB007878B6 /* Artwork.swift */; };
+		65ABD56626C9B580007878B6 /* ArkworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABD56526C9B580007878B6 /* ArkworkViews.swift */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 		494A05CF23C1CAFD00A919D4 /* PublicArt.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PublicArt.geojson; sourceTree = "<group>"; };
 		49D5371823CC73880086C391 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		65ABD56326C9ABFB007878B6 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		65ABD56526C9B580007878B6 /* ArkworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkworkViews.swift; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* HonoluluArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HonoluluArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				494A05CF23C1CAFD00A919D4 /* PublicArt.geojson */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
+				65ABD56326C9ABFB007878B6 /* Artwork.swift */,
+				65ABD56526C9B580007878B6 /* ArkworkViews.swift */,
 			);
 			path = HonoluluArt;
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65ABD56626C9B580007878B6 /* ArkworkViews.swift in Sources */,
 				49D5371923CC73880086C391 /* ViewController.swift in Sources */,
+				65ABD56426C9ABFB007878B6 /* Artwork.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
