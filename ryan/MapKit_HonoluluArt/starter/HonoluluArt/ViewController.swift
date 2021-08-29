@@ -3,7 +3,7 @@ import MapKit
 
 //creating ViewController class
 class ViewController: UIViewController {
-  //creates outlet from Interface Builder to view controller through @IBOutlet (hence black circle)
+  //creates outlet from Interface Builder to view controller through @IBOutlet (hence circle)
   @IBOutlet private var mapView: MKMapView!
   
   private var artworks: [Artwork] = []
