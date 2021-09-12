@@ -35,18 +35,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
   private var artworks: [Artwork] = []
   var locationManager:CLLocationManager!
       var currentLocationStr = "Current location"
+  var initialLatitude: Double = 0.0
+  var initialLongitude: Double = 0.0
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    getUserLocation()
     // Set initial location in Honolulu
-    let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.4194)
+    let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
     mapView.centerToLocation(initialLocation)
     
-    let oahuCenter = CLLocation(latitude: 37.7749, longitude: -122.4194)
+    let oahuCenter = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
     let region = MKCoordinateRegion(
       center: oahuCenter.coordinate,
-      latitudinalMeters: 10000,
-      longitudinalMeters: 10000)
+      latitudinalMeters: 20000,
+      longitudinalMeters: 20000)
     mapView.setCameraBoundary(
       MKMapView.CameraBoundary(coordinateRegion: region),
       animated: true)
@@ -61,7 +64,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
       forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     
     loadInitialData()
-    getUserLocation()
     mapView.addAnnotations(artworks)
   }
   
@@ -80,6 +82,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
               mapView.setRegion(mRegion, animated: true)
     if let location = locations.last {
       print("Lat : \(location.coordinate.latitude) \nLng : \(location.coordinate.longitude)")
+      initialLatitude = location.coordinate.latitude
+      initialLongitude = location.coordinate.longitude
     }
   }
   
