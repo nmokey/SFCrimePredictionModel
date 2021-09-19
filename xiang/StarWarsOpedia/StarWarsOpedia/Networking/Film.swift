@@ -27,50 +27,53 @@
 /// THE SOFTWARE.
 
 import Foundation
-import MapKit
 
-class ArtworkMarkerView: MKMarkerAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      // 1
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-
-      let mapsButton = UIButton(frame: CGRect(
-        origin: CGPoint.zero,
-        size: CGSize(width: 48, height: 48)))
-      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
-      rightCalloutAccessoryView = mapsButton
-
-      // 2
-      markerTintColor = artwork.markerTintColor
-      glyphImage = artwork.image
-
-      let detailLabel = UILabel()
-      detailLabel.numberOfLines = 0
-      detailLabel.font = detailLabel.font.withSize(12)
-      detailLabel.text = artwork.subtitle
-      detailCalloutAccessoryView = detailLabel
-    }
+struct Film: Decodable {
+  let id: Int
+  let title: String
+  let openingCrawl: String
+  let director: String
+  let producer: String
+  let releaseDate: String
+  let starships: [String]
+  
+  enum CodingKeys: String, CodingKey {
+    case id = "episode_id"
+    case title
+    case openingCrawl = "opening_crawl"
+    case director
+    case producer
+    case releaseDate = "release_date"
+    case starships
   }
 }
 
-class ArtworkView: MKAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-      rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
-      image = artwork.image
-    }
+extension Film: Displayable {
+  var titleLabelText: String {
+    title
+  }
+  
+  var subtitleLabelText: String {
+    "Episode \(String(id))"
+  }
+  
+  var item1: (label: String, value: String) {
+    ("DIRECTOR", director)
+  }
+  
+  var item2: (label: String, value: String) {
+    ("PRODUCER", producer)
+  }
+  
+  var item3: (label: String, value: String) {
+    ("RELEASE DATE", releaseDate)
+  }
+  
+  var listTitle: String {
+    "STARSHIPS"
+  }
+  
+  var listItems: [String] {
+    starships
   }
 }
-

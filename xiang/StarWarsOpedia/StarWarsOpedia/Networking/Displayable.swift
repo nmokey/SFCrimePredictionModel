@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -26,51 +26,12 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
-import MapKit
-
-class ArtworkMarkerView: MKMarkerAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      // 1
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-
-      let mapsButton = UIButton(frame: CGRect(
-        origin: CGPoint.zero,
-        size: CGSize(width: 48, height: 48)))
-      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
-      rightCalloutAccessoryView = mapsButton
-
-      // 2
-      markerTintColor = artwork.markerTintColor
-      glyphImage = artwork.image
-
-      let detailLabel = UILabel()
-      detailLabel.numberOfLines = 0
-      detailLabel.font = detailLabel.font.withSize(12)
-      detailLabel.text = artwork.subtitle
-      detailCalloutAccessoryView = detailLabel
-    }
-  }
+protocol Displayable {
+  var titleLabelText: String { get }
+  var subtitleLabelText: String { get }
+  var item1: (label: String, value: String) { get }
+  var item2: (label: String, value: String) { get }
+  var item3: (label: String, value: String) { get }
+  var listTitle: String { get }
+  var listItems: [String] { get }
 }
-
-class ArtworkView: MKAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-      rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
-      image = artwork.image
-    }
-  }
-}
-

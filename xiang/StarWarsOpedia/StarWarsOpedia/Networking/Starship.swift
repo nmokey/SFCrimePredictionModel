@@ -27,50 +27,65 @@
 /// THE SOFTWARE.
 
 import Foundation
-import MapKit
 
-class ArtworkMarkerView: MKMarkerAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      // 1
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-
-      let mapsButton = UIButton(frame: CGRect(
-        origin: CGPoint.zero,
-        size: CGSize(width: 48, height: 48)))
-      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
-      rightCalloutAccessoryView = mapsButton
-
-      // 2
-      markerTintColor = artwork.markerTintColor
-      glyphImage = artwork.image
-
-      let detailLabel = UILabel()
-      detailLabel.numberOfLines = 0
-      detailLabel.font = detailLabel.font.withSize(12)
-      detailLabel.text = artwork.subtitle
-      detailCalloutAccessoryView = detailLabel
-    }
+struct Starship: Decodable {
+  var name: String
+  var model: String
+  var manufacturer: String
+  var cost: String
+  var length: String
+  var maximumSpeed: String
+  var crewTotal: String
+  var passengerTotal: String
+  var cargoCapacity: String
+  var consumables: String
+  var hyperdriveRating: String
+  var starshipClass: String
+  var films: [String]
+  
+  enum CodingKeys: String, CodingKey {
+    case name
+    case model
+    case manufacturer
+    case cost = "cost_in_credits"
+    case length
+    case maximumSpeed = "max_atmosphering_speed"
+    case crewTotal = "crew"
+    case passengerTotal = "passengers"
+    case cargoCapacity = "cargo_capacity"
+    case consumables
+    case hyperdriveRating = "hyperdrive_rating"
+    case starshipClass = "starship_class"
+    case films
   }
 }
 
-class ArtworkView: MKAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-      rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
-      image = artwork.image
-    }
+extension Starship: Displayable {
+  var titleLabelText: String {
+    name
+  }
+  
+  var subtitleLabelText: String {
+    model
+  }
+  
+  var item1: (label: String, value: String) {
+    ("MANUFACTURER", manufacturer)
+  }
+  
+  var item2: (label: String, value: String) {
+    ("CLASS", starshipClass)
+  }
+  
+  var item3: (label: String, value: String) {
+    ("HYPERDRIVE RATING", hyperdriveRating)
+  }
+  
+  var listTitle: String {
+    "FILMS"
+  }
+  
+  var listItems: [String] {
+    films
   }
 }
-
