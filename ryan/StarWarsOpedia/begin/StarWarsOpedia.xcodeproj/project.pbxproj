@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		183D953D23DF5A4700845F5F /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D953C23DF5A4700845F5F /* Displayable.swift */; };
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
+		64928A5927013A6D0058DA11 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64928A5827013A6D0058DA11 /* Starship.swift */; };
+		64C44326270A70D5004179D5 /* Starships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C44325270A70D5004179D5 /* Starships.swift */; };
 		64D1CBA326EECB3900684615 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1CBA226EECB3900684615 /* Film.swift */; };
+		64E3A43826F7FE1300472A9C /* Films.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E3A43726F7FE1300472A9C /* Films.swift */; };
 		6B2A81D738A340AD12B54972 /* Pods_StarWarsOpedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4884293E01387DDB245CC1FF /* Pods_StarWarsOpedia.framework */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
@@ -23,7 +26,10 @@
 		3C3575AC179B46F2E2D990C6 /* Pods-StarWarsOpedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsOpedia.release.xcconfig"; path = "Target Support Files/Pods-StarWarsOpedia/Pods-StarWarsOpedia.release.xcconfig"; sourceTree = "<group>"; };
 		4884293E01387DDB245CC1FF /* Pods_StarWarsOpedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsOpedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64928A5827013A6D0058DA11 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
+		64C44325270A70D5004179D5 /* Starships.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starships.swift; sourceTree = "<group>"; };
 		64D1CBA226EECB3900684615 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		64E3A43726F7FE1300472A9C /* Films.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Films.swift; sourceTree = "<group>"; };
 		BE9F74ECC6ADA9E64E221425 /* Pods-StarWarsOpedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsOpedia.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsOpedia/Pods-StarWarsOpedia.debug.xcconfig"; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* StarWarsOpedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsOpedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +57,9 @@
 			children = (
 				183D953C23DF5A4700845F5F /* Displayable.swift */,
 				64D1CBA226EECB3900684615 /* Film.swift */,
+				64E3A43726F7FE1300472A9C /* Films.swift */,
+				64928A5827013A6D0058DA11 /* Starship.swift */,
+				64C44325270A70D5004179D5 /* Starships.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -232,6 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D1CBA326EECB3900684615 /* Film.swift in Sources */,
+				64928A5927013A6D0058DA11 /* Starship.swift in Sources */,
+				64E3A43826F7FE1300472A9C /* Films.swift in Sources */,
+				64C44326270A70D5004179D5 /* Starships.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 				E087AADA23620E3B00D1E33E /* MainTableViewController.swift in Sources */,
 				183D953D23DF5A4700845F5F /* Displayable.swift in Sources */,

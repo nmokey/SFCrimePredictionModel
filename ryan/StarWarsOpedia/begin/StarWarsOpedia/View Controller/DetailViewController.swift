@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
     commonInit()
     
     listTableView.dataSource = self
+    fetchList()
   }
   
   private func commonInit() {
@@ -49,6 +51,50 @@ extension DetailViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+    cell.textLabel?.text = listData[indexPath.row].titleLabelText //This code sets the cell’s textLabel with the appropriate title from your list data.
     return cell
   }
+}
+
+extension DetailViewController {
+  // 1 -  a generic helper to perform the network request
+  private func fetch<T: Decodable & Displayable>(_ list: [String], of: T.Type) {
+    var items: [T] = []
+    // 2 - you use a dispatch group so you’re notified when all the calls have completed
+    let fetchGroup = DispatchGroup()
+    // 3 - Loop through each item in the list.
+    list.forEach { (url) in
+      // 4 - Inform the dispatch group that you are entering.
+      fetchGroup.enter()
+      // 5 - Make an Alamofire request to the starship endpoint, validate the response, and decode the response into an item of the appropriate type.
+      AF.request(url).validate().responseDecodable(of: T.self) { (response) in
+        if let value = response.value {
+          items.append(value)
+        }
+        // 6 - In the request’s completion handler, inform the dispatch group that you’re leaving.
+        fetchGroup.leave()
+      }
+    }
+    
+    fetchGroup.notify(queue: .main) {
+      self.listData = items
+      self.listTableView.reloadData()
+    }
+  }
+  
+  func fetchList() {
+    // 1 - Since data is optional, ensure it’s not nil before doing anything else.
+    guard let data = data else { return }
+    
+    // 2 - Use the type of data to decide how to invoke your helper method.
+    switch data {
+    case is Film:
+      fetch(data.listItems, of: Starship.self)
+    case is Starship:
+      fetch(data.listItems, of: Film.self)
+    default:
+      print("Unknown type: ", String(describing: type(of: data)))
+    }
+  }
+
 }
