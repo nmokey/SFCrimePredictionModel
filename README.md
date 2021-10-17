@@ -11,7 +11,7 @@ Build a mobile App that can use the user's location and their current time while
 
 ## Project Phases
 
-1. Build a backend that can give probabilities of different types of crimes in San Francisco, given specific time of the day as well as locations in San Francisco.
+1. Build a backend that can give probabilities of different types of crimes in San Francisco, given specific time of the day as well as locations in San Francisco.The prediction model is take from [Kaggle's San Francisco Crime Classification Competition](https://www.kaggle.com/c/sf-crime/code). 
 
 2. Build a mobile App that can extract user's location in San Francisco.
 
