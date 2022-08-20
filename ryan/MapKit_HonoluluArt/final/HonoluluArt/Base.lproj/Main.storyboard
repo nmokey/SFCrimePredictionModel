@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Xq-jp-ww2">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="lT3-GE-Yow">
+            <objects>
+                <viewController id="0Xq-jp-ww2" customClass="ViewController" customModule="HonoluluArt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wsm-lX-jQ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wGL-SM-zG8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wGL-SM-zG8" firstAttribute="top" secondItem="wsm-lX-jQ6" secondAttribute="top" id="4To-tC-ogR"/>
+                            <constraint firstAttribute="trailing" secondItem="wGL-SM-zG8" secondAttribute="trailing" id="Geg-ky-n9o"/>
+                            <constraint firstItem="wGL-SM-zG8" firstAttribute="leading" secondItem="wsm-lX-jQ6" secondAttribute="leading" id="Qtq-Nc-hNf"/>
+                            <constraint firstAttribute="bottom" secondItem="wGL-SM-zG8" secondAttribute="bottom" id="iPU-lt-79d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MYF-Wv-Kfl"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="wGL-SM-zG8" id="xqW-by-7yp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZwV-SR-Cyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-506" y="53"/>
+        </scene>
+    </scenes>
+</document>
