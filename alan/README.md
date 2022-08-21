@@ -29,3 +29,9 @@ Using Django - Python framework
 			...
 		}
 	}
+
+	In case of error raised in backend code (data processing, model loading, etc):
+	{
+		'Message': string (containing error information),
+		'Result': string (containing error information)
+	}
