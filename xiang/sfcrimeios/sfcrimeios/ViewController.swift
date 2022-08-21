@@ -73,11 +73,23 @@ extension ViewController: CLLocationManagerDelegate {
     let encoder = JSONEncoder()
     let parameterEncoder = JSONParameterEncoder(encoder: encoder)
 
+    struct CrimeProb: Decodable {
+      let Crime: String
+      let Prob: Float64
+    }
+    struct CrimePredictResult: Decodable {
+      let Message: String
+      let Result: [CrimeProb]
+    }
     AF.request("http://127.0.0.1:8000/crime/predict/",
                method: .post,
                parameters: postData,
-               encoder: parameterEncoder).response {
-      response in debugPrint(response)
+               encoder: parameterEncoder)
+    .responseDecodable(of: CrimePredictResult.self) { (response) in
+      debugPrint(response)
+      guard let predicts = response.value else { return }
+      print(predicts.Message)
+      print(predicts.Result.sorted{$0.Prob > $1.Prob}[0])
     }
   }
   
