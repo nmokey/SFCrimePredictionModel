@@ -125,7 +125,12 @@ def predict_POST(req):
 		result = pd.Series(data = y_pred[0], 
 			index = le2.inverse_transform(np.linspace(0, 38, 39, dtype = 'int16'))).to_dict()
 
-		return JsonResponse({'Message': 'Prediction ok!', 'Result': result}, safe = False)
+		parsed_result = []
+		for crime, prob in result.items():
+			parsed_result.append(json.dumps({'Crime': crime, 'Prob': prob}))
+
+		print(parsed_result)
+		return JsonResponse({'Message': 'Prediction ok!', 'Result': parsed_result}, safe = False)
 
 def predict(req):
 	TYPE = req.method
