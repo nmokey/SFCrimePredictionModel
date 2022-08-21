@@ -127,7 +127,7 @@ def predict_POST(req):
 
 		parsed_result = []
 		for crime, prob in result.items():
-			parsed_result.append(json.dumps({'Crime': crime, 'Prob': prob}))
+			parsed_result.append({'Crime': crime, 'Prob': prob})
 
 		print(parsed_result)
 		return JsonResponse({'Message': 'Prediction ok!', 'Result': parsed_result}, safe = False)
