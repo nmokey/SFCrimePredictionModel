@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
+import Alamofire
+
 class ViewController: UIViewController {
 
   @IBOutlet weak var mapView: MKMapView!
@@ -55,6 +57,28 @@ extension ViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
     print("locations = \(locValue.latitude) \(locValue.longitude)")
+
+    struct CrimePredictFeatures: Encodable {
+      let Latitude: Float32
+      let Longitude: Float32
+      let Address: String
+      let Dates: String
+      let PdDistrict: String
+      let DayOfWeek: String
+    }
+    struct CrimePredictPostData: Encodable {
+      let Features: CrimePredictFeatures
+    }
+    let postData = CrimePredictPostData(Features: CrimePredictFeatures(Latitude: 37.7873589, Longitude: -122.408227, Address: "42042 Indigo Dr", Dates: "2022-08-20 20:15:19", PdDistrict: "SOUTHERN", DayOfWeek: "Wednesday"))
+    let encoder = JSONEncoder()
+    let parameterEncoder = JSONParameterEncoder(encoder: encoder)
+
+    AF.request("http://127.0.0.1:8000/crime/predict/",
+               method: .post,
+               parameters: postData,
+               encoder: parameterEncoder).response {
+      response in debugPrint(response)
+    }
   }
   
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
