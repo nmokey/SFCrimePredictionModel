@@ -23,11 +23,16 @@ Using Django - Python framework
 
 	{
 		'Message': string,
-		'Result': {
-			'Crime1': prob1,
-			'Crime2': prob2,
-			...
-		}
+		'Result': [
+			{
+				'Crime': crime1,
+				'Prob': prob1
+			},
+			{
+				'Crime': crime1,
+				'Prob': prob1
+			}
+		]
 	}
 
 	In case of error raised in backend code (data processing, model loading, etc):
