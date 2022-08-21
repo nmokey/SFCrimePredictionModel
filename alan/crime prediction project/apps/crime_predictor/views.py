@@ -109,7 +109,7 @@ def predict_POST(req):
 				Date = timezone.make_aware(dateparse.parse_datetime(body['Dates'])),
 				Latitude = body['Latitude'],
 				Longitude = body['Longitude'],
-				PdDistrict = body['PdDistrict'],
+				PdDistrict = body['PdDistrict'].upper(),
 				DayOfWeek = body['DayOfWeek'].upper()
 			)
 		except(ValueError) as ve:
