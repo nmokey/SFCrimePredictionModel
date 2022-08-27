@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6575DFB328B1D7180051CF3C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6575DFB228B1D7180051CF3C /* Alamofire */; };
+		65ABDB3D28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */; };
 		B7711C8B27261F63008B42B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7711C8A27261F63008B42B8 /* AppDelegate.swift */; };
 		B7711C8D27261F63008B42B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7711C8C27261F63008B42B8 /* SceneDelegate.swift */; };
 		B7711C8F27261F63008B42B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7711C8E27261F63008B42B8 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrimePredictionMapAnnotation.swift; sourceTree = "<group>"; };
 		B7711C8727261F63008B42B8 /* sfcrimeios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfcrimeios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7711C8A27261F63008B42B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7711C8C27261F63008B42B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				B7711C9327261F67008B42B8 /* Assets.xcassets */,
 				B7711C9527261F67008B42B8 /* LaunchScreen.storyboard */,
 				B7711C9827261F67008B42B8 /* Info.plist */,
+				65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */,
 			);
 			path = sfcrimeios;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65ABDB3D28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift in Sources */,
 				B7711C8F27261F63008B42B8 /* ViewController.swift in Sources */,
 				B7711C8B27261F63008B42B8 /* AppDelegate.swift in Sources */,
 				B7711C8D27261F63008B42B8 /* SceneDelegate.swift in Sources */,
