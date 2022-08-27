@@ -22,13 +22,12 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3cs2oqcvw01*$l33zdwt%6h_a%b^hva=68^cy7y^unlf2!d)d^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.101', '192.168.86.46', '127.0.0.1']
-
+SECRET_KEY = 'SWITCHPIGGY211'
 
 # Application definition
 
