@@ -35,6 +35,10 @@ class CrimePredictionMapAnnotation: NSObject, MKAnnotation {
   }
 
   var subtitle: String? {
-      return crimes[0] + ":" + String(format: "%2.0f", probabilities[0]*100) + "%"
+      var display = ""
+      for (crime, prob) in zip(crimes, probabilities) {
+          display += crime + ":" + String(format: "%2.0f", prob*100) + "%\n"
+      }
+      return display
   }
 }

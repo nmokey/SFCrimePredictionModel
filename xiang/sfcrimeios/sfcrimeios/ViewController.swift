@@ -191,16 +191,23 @@ extension ViewController: CLLocationManagerDelegate {
             debugPrint(response)
             guard let predicts = response.value else { return }
             print(predicts.Message)
-            let topPrediction = predicts.Result.sorted{$0.Prob > $1.Prob}[0]
-            print(topPrediction)
+            let sortedPredicts = predicts.Result.sorted{$0.Prob > $1.Prob}
+            let topPredicts = [sortedPredicts[0], sortedPredicts[1], sortedPredicts[2]]
+            print(topPredicts)
             
             // Add map annotation for the top crime.
+            var displayCrimes: [String] = []
+            var displayProbs: [Double] = []
+            for p in topPredicts {
+              displayCrimes.append(p.Crime)
+              displayProbs.append(p.Prob)
+            }
             let cpAnnotation = CrimePredictionMapAnnotation(
               title: placemark.subLocality ?? "unknown",
               locationName: features.Address,
               coordinate: locValue,
-              crimes: [topPrediction.Crime],
-              probabilities: [topPrediction.Prob])
+              crimes: displayCrimes,
+              probabilities: displayProbs)
             self.mapView.addAnnotation(cpAnnotation)
           }
         }
