@@ -24,7 +24,7 @@ Build a mobile App that can use the user's location and their current time while
 
 ## Development
 
-### Start backupend locally
+### Start backend locally
 
 Dependencies:
 
@@ -44,7 +44,7 @@ python3.9 manage.py migrate
 python3.9 manage.py runserver
 ```
 
-### Load xCode project
+### Load xCode project for ios app dev
 
 Load `SFCrimePredictionModel/sfcrimeios` as a xcode project.
 
