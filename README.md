@@ -22,6 +22,32 @@ Build a mobile App that can use the user's location and their current time while
 ### Ver 1.0
 <img src="https://user-images.githubusercontent.com/756243/187046807-8eb0c9f1-e8ea-4644-acd8-47df5e72e2b4.png" width="200">
 
+## Development
+
+### Start backupend locally
+
+Dependencies:
+
+- python 3.9 or above
+
+```
+cd SFCrimePredictionModel\alan/crime\ prediction\ project
+
+python3.9 -m venv venv
+
+source venv/bin/activate
+
+pip3.9 install  -r requirements.txt
+
+python3.9 manage.py migrate
+
+python3.9 manage.py runserver
+```
+
+### Load xCode project
+
+Load `SFCrimePredictionModel/sfcrimeios` as a xcode project.
+
 # Team members
 - Ryan (nmokey)
 - Xiang (xxiao23)
