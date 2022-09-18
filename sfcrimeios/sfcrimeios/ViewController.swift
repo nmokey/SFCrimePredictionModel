@@ -183,7 +183,7 @@ extension ViewController: CLLocationManagerDelegate {
             let Message: String
             let Result: [CrimeProb]
           }
-          AF.request("http://127.0.0.1:8000/crime/predict/",
+          AF.request("http://13.57.80.134:8000/crime/predict/",
                      method: .post,
                      parameters: postData,
                      encoder: parameterEncoder)
