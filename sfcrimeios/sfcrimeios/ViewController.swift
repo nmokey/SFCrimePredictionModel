@@ -203,7 +203,7 @@ extension ViewController: CLLocationManagerDelegate {
               displayProbs.append(p.Prob)
             }
             let cpAnnotation = CrimePredictionMapAnnotation(
-              title: placemark.subLocality ?? "unknown",
+              title: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
               locationName: features.Address,
               coordinate: locValue,
               crimes: displayCrimes,
