@@ -15,22 +15,20 @@ import Alamofire
 class ViewController: UIViewController {
 
   @IBOutlet weak var mapView: MKMapView!
-//  var locationManager:CLLocationManager!
+  
   var locationDataManager: LocationDataManager!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-//    locationManager = CLLocationManager.init()
-//    locationManager.delegate = self
-//    locationManager.requestWhenInUseAuthorization()
-//    if CLLocationManager.locationServicesEnabled() {
-//      locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//      locationManager.startUpdatingLocation()
-//    }
+    locationDataManager = LocationDataManager()
+    let locValue: CLLocationCoordinate2D = locationDataManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+    let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+    mapView.centerToLocation(currentLocation)
+    locationDataManager.mapView = mapView
   }
-
 }
 
-private extension MKMapView {
+extension MKMapView {
   func centerToLocation(
     _ location: CLLocation,
     regionRadius: CLLocationDistance = 1000

@@ -9,6 +9,7 @@
 import Contacts
 import CoreLocation
 import Foundation
+import MapKit
 
 import Alamofire
 
@@ -43,7 +44,8 @@ extension Date {
 class LocationDataManager : NSObject, CLLocationManagerDelegate {
   var locationManager = CLLocationManager()
   @Published var authorizationStatus: CLAuthorizationStatus?
-
+  weak var mapView: MKMapView?
+  
   override init() {
     super.init()
     locationManager.delegate = self
@@ -59,10 +61,8 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
       // Insert code here of what should happen when Location services are authorized
       authorizationStatus = .authorizedWhenInUse
       locationManager.requestLocation()
-      if CLLocationManager.locationServicesEnabled() {
-        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        manager.startMonitoringSignificantLocationChanges()
-      }
+      manager.desiredAccuracy = kCLLocationAccuracyBest
+      manager.startMonitoringSignificantLocationChanges()
       break
     case .restricted:  // Location services currently unavailable.
       // Insert code here of what should happen when Location services are NOT authorized
@@ -92,8 +92,6 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
     print("locations = \(locValue.latitude) \(locValue.longitude)")
-//    let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-//    mapView.centerToLocation(currentLocation)
 
     struct CrimePredictFeatures: Encodable {
       let Latitude: Double
@@ -181,12 +179,12 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
                      parameters: postData,
                      encoder: parameterEncoder)
           .responseDecodable(of: CrimePredictResult.self) { (response) in
-            debugPrint(response)
+//            debugPrint(response)
             guard let predicts = response.value else { return }
-            print(predicts.Message)
+            debugPrint(predicts.Message)
             let sortedPredicts = predicts.Result.sorted{$0.Prob > $1.Prob}
             let topPredicts = [sortedPredicts[0], sortedPredicts[1], sortedPredicts[2]]
-            print(topPredicts)
+            debugPrint(topPredicts)
             
             // Add map annotation for the top crime.
             var displayCrimes: [String] = []
@@ -195,13 +193,17 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
               displayCrimes.append(p.Crime)
               displayProbs.append(p.Prob)
             }
-//            let cpAnnotation = CrimePredictionMapAnnotation(
-//              title: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
-//              locationName: features.Address,
-//              coordinate: locValue,
-//              crimes: displayCrimes,
-//              probabilities: displayProbs)
-//            self.mapView.addAnnotation(cpAnnotation)
+            let cpAnnotation = CrimePredictionMapAnnotation(
+              title: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
+              locationName: features.Address,
+              coordinate: locValue,
+              crimes: displayCrimes,
+              probabilities: displayProbs)
+            self.mapView?.removeAnnotations(self.mapView?.annotations ?? [])
+            self.mapView?.addAnnotation(cpAnnotation)
+            let locValue: CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+            let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            self.mapView?.centerToLocation(currentLocation)
           }
         }
     })
