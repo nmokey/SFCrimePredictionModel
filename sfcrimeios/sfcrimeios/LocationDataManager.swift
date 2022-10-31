@@ -60,9 +60,9 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
     case .authorizedWhenInUse:  // Location services are available.
       // Insert code here of what should happen when Location services are authorized
       authorizationStatus = .authorizedWhenInUse
-      locationManager.requestLocation()
+      manager.requestLocation()
       manager.desiredAccuracy = kCLLocationAccuracyBest
-      manager.startMonitoringSignificantLocationChanges()
+      manager.startUpdatingLocation()
       break
     case .restricted:  // Location services currently unavailable.
       // Insert code here of what should happen when Location services are NOT authorized
@@ -179,22 +179,22 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
                      parameters: postData,
                      encoder: parameterEncoder)
           .responseDecodable(of: CrimePredictResult.self) { (response) in
-//            debugPrint(response)
             guard let predicts = response.value else { return }
             debugPrint(predicts.Message)
-            let sortedPredicts = predicts.Result.sorted{$0.Prob > $1.Prob}
-            let topPredicts = [sortedPredicts[0], sortedPredicts[1], sortedPredicts[2]]
-            debugPrint(topPredicts)
+            let sorted = predicts.Result.sorted{$0.Prob > $1.Prob}
+            let filtered = sorted.filter { $0.Crime != "OTHER OFFENSES"}
+            debugPrint(filtered)
             
             // Add map annotation for the top crime.
             var displayCrimes: [String] = []
             var displayProbs: [Double] = []
-            for p in topPredicts {
+            // Pick top 3 crimes for display.
+            for p in filtered[0...2] {
               displayCrimes.append(p.Crime)
               displayProbs.append(p.Prob)
             }
             let cpAnnotation = CrimePredictionMapAnnotation(
-              title: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
+              neighborhood: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
               locationName: features.Address,
               coordinate: locValue,
               crimes: displayCrimes,

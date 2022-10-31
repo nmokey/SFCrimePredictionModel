@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrimePredictionMapAnnotation.swift; sourceTree = "<group>"; };
+		65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CrimePredictionMapAnnotation.swift; sourceTree = "<group>"; tabWidth = 2; };
 		65EE86BD28FCAAE7000003DC /* LocationDataManager.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B7711C8727261F63008B42B8 /* sfcrimeios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfcrimeios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7711C8A27261F63008B42B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
