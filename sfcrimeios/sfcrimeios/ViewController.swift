@@ -30,6 +30,7 @@ class ViewController: UIViewController {
       forAnnotationViewWithReuseIdentifier:
         MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.delegate = self
+    mapView.showsUserLocation = false
   }
 }
 

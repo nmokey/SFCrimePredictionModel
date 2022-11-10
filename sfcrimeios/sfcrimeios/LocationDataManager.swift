@@ -61,8 +61,8 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
       // Insert code here of what should happen when Location services are authorized
       authorizationStatus = .authorizedWhenInUse
       manager.requestLocation()
-      manager.desiredAccuracy = kCLLocationAccuracyBest
-      manager.startUpdatingLocation()
+      manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+      manager.startMonitoringSignificantLocationChanges()
       break
     case .restricted:  // Location services currently unavailable.
       // Insert code here of what should happen when Location services are NOT authorized
