@@ -25,6 +25,11 @@ class ViewController: UIViewController {
     let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
     mapView.centerToLocation(currentLocation)
     locationDataManager.mapView = mapView
+    mapView.register(
+      CrimePredictionMapAnnotationView.self,
+      forAnnotationViewWithReuseIdentifier:
+        MKMapViewDefaultAnnotationViewReuseIdentifier)
+    mapView.delegate = self
   }
 }
 
@@ -41,3 +46,5 @@ extension MKMapView {
   }
 }
 
+extension ViewController: MKMapViewDelegate {
+}
