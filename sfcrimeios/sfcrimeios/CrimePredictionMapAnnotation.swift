@@ -34,20 +34,13 @@ class CrimePredictionMapAnnotation: NSObject, MKAnnotation {
     super.init()
   }
 
-  var title: String? {
-    var display = neighborhood + "\n"
-    display += crimes[0] + ":" + String(format: "%2.0f", probabilities[0]*100) + "%\n"
-    return display
-  }
-  
-  var subtitle: String? {
-    var display = ""
-    var i = 0
+  var detailHtml: String {
+    var html = "<h2>" + neighborhood + "</h2><table>"
+    html += "<th>Crime</th><th>Prob</th>"
     for (crime, prob) in zip(crimes, probabilities) {
-      i += 1
-      if (i == 1) { continue }
-      display += crime + ":" + String(format: "%2.0f", prob*100) + "%\n"
+      html += "<tr><td>" + crime + "</td><td>" + String(format: "%2.0f", prob*100) + "%</td></tr>"
     }
-    return display
+    html += "</table>"
+    return html
   }
 }

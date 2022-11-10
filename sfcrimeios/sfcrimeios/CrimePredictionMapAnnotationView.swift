@@ -9,6 +9,15 @@
 import Foundation
 import MapKit
 
+extension NSAttributedString {
+  convenience init(htmlString html: String) throws {
+    try self.init(data: Data(html.utf8), options: [
+      .documentType: NSAttributedString.DocumentType.html,
+      .characterEncoding: String.Encoding.utf8.rawValue
+    ], documentAttributes: nil)
+  }
+}
+
 class CrimePredictionMapAnnotationView : MKMarkerAnnotationView {
   override var annotation: MKAnnotation? {
     willSet {
@@ -22,6 +31,12 @@ class CrimePredictionMapAnnotationView : MKMarkerAnnotationView {
       if let letter = crime_prediction.crimes[0].first {
         glyphText = String(letter)
       }
+
+      let detailLabel = UILabel()
+      detailLabel.numberOfLines = 0
+      detailLabel.font = detailLabel.font.withSize(12)
+      detailLabel.attributedText = try? NSAttributedString(htmlString: crime_prediction.detailHtml)
+      detailCalloutAccessoryView = detailLabel
     }
   }
 }
