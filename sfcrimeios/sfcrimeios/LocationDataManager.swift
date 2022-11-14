@@ -45,6 +45,8 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
   var locationManager = CLLocationManager()
   @Published var authorizationStatus: CLAuthorizationStatus?
   weak var mapView: MKMapView?
+  weak var tableView: UITableView?
+  var crimePredictionResult: CrimePredictionResult?
   
   override init() {
     super.init()
@@ -166,44 +168,19 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
           let encoder = JSONEncoder()
           let parameterEncoder = JSONParameterEncoder(encoder: encoder)
 
-          struct CrimeProb: Decodable {
-            let Crime: String
-            let Prob: Float64
-          }
-          struct CrimePredictResult: Decodable {
-            let Message: String
-            let Result: [CrimeProb]
-          }
           AF.request("http://13.57.80.134:8000/crime/predict/",
                      method: .post,
                      parameters: postData,
                      encoder: parameterEncoder)
-          .responseDecodable(of: CrimePredictResult.self) { (response) in
+          .responseDecodable(of: CrimePredictionResult.self) { (response) in
             guard let predicts = response.value else { return }
             debugPrint(predicts.Message)
             let sorted = predicts.Result.sorted{$0.Prob > $1.Prob}
             let filtered = sorted.filter { $0.Crime != "OTHER OFFENSES"}
             debugPrint(filtered)
+            self.crimePredictionResult = CrimePredictionResult(predicts.Message, filtered)
             
-            // Add map annotation for the top crime.
-            var displayCrimes: [String] = []
-            var displayProbs: [Double] = []
-            // Pick top 3 crimes for display.
-            for p in filtered[0...2] {
-              displayCrimes.append(p.Crime)
-              displayProbs.append(p.Prob)
-            }
-            let cpAnnotation = CrimePredictionMapAnnotation(
-              neighborhood: placemark.name ?? placemark.subLocality ?? placemark.locality ?? "unknown location",
-              locationName: features.Address,
-              coordinate: locValue,
-              crimes: displayCrimes,
-              probabilities: displayProbs)
-            self.mapView?.removeAnnotations(self.mapView?.annotations ?? [])
-            self.mapView?.addAnnotation(cpAnnotation)
-            let locValue: CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-            let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            self.mapView?.centerToLocation(currentLocation)
+            self.tableView?.reloadData()
           }
         }
     })

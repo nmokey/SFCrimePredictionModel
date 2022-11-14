@@ -10,6 +10,8 @@
 		651775D029174DFE0097CC45 /* CrimePredictionMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651775CF29174DFE0097CC45 /* CrimePredictionMapAnnotationView.swift */; };
 		6575DFB328B1D7180051CF3C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6575DFB228B1D7180051CF3C /* Alamofire */; };
 		65ABDB3D28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */; };
+		65DB2179292199F4002684B4 /* CrimePrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DB2178292199F4002684B4 /* CrimePrediction.swift */; };
+		65DB217B2921DF57002684B4 /* CrimeProbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DB217A2921DF57002684B4 /* CrimeProbTableViewCell.swift */; };
 		65EE86BE28FCAAE7000003DC /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE86BD28FCAAE7000003DC /* LocationDataManager.swift */; };
 		B7711C8B27261F63008B42B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7711C8A27261F63008B42B8 /* AppDelegate.swift */; };
 		B7711C8D27261F63008B42B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7711C8C27261F63008B42B8 /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		651775CF29174DFE0097CC45 /* CrimePredictionMapAnnotationView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CrimePredictionMapAnnotationView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CrimePredictionMapAnnotation.swift; sourceTree = "<group>"; tabWidth = 2; };
+		65DB2178292199F4002684B4 /* CrimePrediction.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CrimePrediction.swift; sourceTree = "<group>"; tabWidth = 2; };
+		65DB217A2921DF57002684B4 /* CrimeProbTableViewCell.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CrimeProbTableViewCell.swift; sourceTree = "<group>"; tabWidth = 2; };
 		65EE86BD28FCAAE7000003DC /* LocationDataManager.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B7711C8727261F63008B42B8 /* sfcrimeios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sfcrimeios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7711C8A27261F63008B42B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				65ABDB3C28BAA8FA00E63C83 /* CrimePredictionMapAnnotation.swift */,
 				65EE86BD28FCAAE7000003DC /* LocationDataManager.swift */,
 				651775CF29174DFE0097CC45 /* CrimePredictionMapAnnotationView.swift */,
+				65DB2178292199F4002684B4 /* CrimePrediction.swift */,
+				65DB217A2921DF57002684B4 /* CrimeProbTableViewCell.swift */,
 			);
 			path = sfcrimeios;
 			sourceTree = "<group>";
@@ -159,6 +165,8 @@
 				B7711C8F27261F63008B42B8 /* ViewController.swift in Sources */,
 				B7711C8B27261F63008B42B8 /* AppDelegate.swift in Sources */,
 				B7711C8D27261F63008B42B8 /* SceneDelegate.swift in Sources */,
+				65DB2179292199F4002684B4 /* CrimePrediction.swift in Sources */,
+				65DB217B2921DF57002684B4 /* CrimeProbTableViewCell.swift in Sources */,
 				651775D029174DFE0097CC45 /* CrimePredictionMapAnnotationView.swift in Sources */,
 				65EE86BE28FCAAE7000003DC /* LocationDataManager.swift in Sources */,
 			);
