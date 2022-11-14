@@ -10,7 +10,6 @@ import UIKit
 
 class CrimeProbTableViewCell: UITableViewCell {
   
-  @IBOutlet weak var crimeLabel: UILabel!
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code

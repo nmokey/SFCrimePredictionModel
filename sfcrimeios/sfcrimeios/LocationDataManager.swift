@@ -179,6 +179,9 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
             let filtered = sorted.filter { $0.Crime != "OTHER OFFENSES"}
             debugPrint(filtered)
             self.crimePredictionResult = CrimePredictionResult(predicts.Message, filtered)
+            let locValue: CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+            let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            self.mapView?.centerToLocation(currentLocation)
             
             self.tableView?.reloadData()
           }
