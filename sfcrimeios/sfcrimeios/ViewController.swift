@@ -16,6 +16,8 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var mapView: MKMapView!
   
+  @IBOutlet weak var tableView: UITableView!
+  
   var locationDataManager: LocationDataManager!
   
   override func viewDidLoad() {
@@ -30,7 +32,11 @@ class ViewController: UIViewController {
       forAnnotationViewWithReuseIdentifier:
         MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.delegate = self
-    mapView.showsUserLocation = false
+    mapView.showsUserLocation = true
+    
+    locationDataManager.tableView = tableView
+    tableView.dataSource = self
+    tableView.delegate = self
   }
 }
 
@@ -48,4 +54,31 @@ extension MKMapView {
 }
 
 extension ViewController: MKMapViewDelegate {
+}
+
+extension ViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if ((locationDataManager.crimePredictionResult) != nil) {
+      debugPrint(locationDataManager.crimePredictionResult!.Result.count)
+      return min(locationDataManager.crimePredictionResult!.Result.count, 3)
+    }
+    return 0
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CrimeProbTableViewCell", for: indexPath)
+    let crimeProb = locationDataManager.crimePredictionResult?.Result[indexPath.row]
+    debugPrint("\(crimeProb!.Crime) for table view row \(indexPath.row)")
+    cell.textLabel?.text = crimeProb?.Crime
+    cell.detailTextLabel?.text = String(format: "%2.0f", crimeProb!.Prob*100) + "%"
+    
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 120/CGFloat(tableView.numberOfRows(inSection: 0))
+  }
+}
+
+extension ViewController: UITableViewDelegate {
 }
