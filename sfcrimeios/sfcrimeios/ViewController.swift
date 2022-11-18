@@ -18,6 +18,10 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var centerButton: UIButton!
+  
+  @IBOutlet weak var locationLabel: UILabel!
+  
   var locationDataManager: LocationDataManager!
   
   override func viewDidLoad() {
@@ -37,6 +41,17 @@ class ViewController: UIViewController {
     locationDataManager.tableView = tableView
     tableView.dataSource = self
     tableView.delegate = self
+
+    locationDataManager.locationLabel = locationLabel
+    
+    centerButton.setTitle("", for: .normal)
+    centerButton.addTarget(self, action: #selector(centerToLocation(_:)), for: .touchUpInside)
+  }
+  
+  @IBAction func centerToLocation(_ sender: UIButton) {
+    let locValue: CLLocationCoordinate2D = self.locationDataManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+    let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+    self.mapView?.centerToLocation(currentLocation)
   }
 }
 
@@ -59,7 +74,6 @@ extension ViewController: MKMapViewDelegate {
 extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if ((locationDataManager.crimePredictionResult) != nil) {
-      debugPrint(locationDataManager.crimePredictionResult!.Result.count)
       return min(locationDataManager.crimePredictionResult!.Result.count, 3)
     }
     return 0
@@ -68,7 +82,6 @@ extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CrimeProbTableViewCell", for: indexPath)
     let crimeProb = locationDataManager.crimePredictionResult?.Result[indexPath.row]
-    debugPrint("\(crimeProb!.Crime) for table view row \(indexPath.row)")
     cell.textLabel?.text = crimeProb?.Crime
     cell.detailTextLabel?.text = String(format: "%2.0f", crimeProb!.Prob*100) + "%"
     

@@ -46,7 +46,9 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
   @Published var authorizationStatus: CLAuthorizationStatus?
   weak var mapView: MKMapView?
   weak var tableView: UITableView?
+  weak var locationLabel: UILabel?
   var crimePredictionResult: CrimePredictionResult?
+  var locationStr: String?
   
   override init() {
     super.init()
@@ -176,14 +178,31 @@ class LocationDataManager : NSObject, CLLocationManagerDelegate {
             guard let predicts = response.value else { return }
             debugPrint(predicts.Message)
             let sorted = predicts.Result.sorted{$0.Prob > $1.Prob}
-            let filtered = sorted.filter { $0.Crime != "OTHER OFFENSES"}
+            let filtered = sorted.filter { ["ASSAULT",
+                                            "SUSPICIOUS OCC",
+                                            "VEHICLE THEFT",
+                                            "ROBBERY",
+                                            "LARCENY/THEFT",
+                                            "DRUG/NARCOTIC",
+                                            "DISORDERLY CONDUCT",
+                                            "SEX OFFENSES FORCIBLE",
+                                            "KIDNAPPING",
+                                            "BURGLARY",
+                                            "DRUNKENNESS",
+                                            "PROSTITUTION",
+                                            "DRIVING UNDER THE INFLUENCE",
+                                            "SUICIDE",
+                                            "SEX OFFENSES NON FORCIBLE",
+                                            "EXTORTION"].contains($0.Crime) }
             debugPrint(filtered)
+            self.locationStr = placemark.subLocality ?? placemark.locality
             self.crimePredictionResult = CrimePredictionResult(predicts.Message, filtered)
             let locValue: CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
             let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             self.mapView?.centerToLocation(currentLocation)
             
             self.tableView?.reloadData()
+            self.locationLabel?.text = self.locationStr ?? "UNKNOWN"
           }
         }
     })
