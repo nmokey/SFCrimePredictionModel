@@ -20,7 +20,7 @@ Build a mobile App that can use the user's location and their current time while
 ## Screenshots
 
 ### Ver 1.0
-<img src="https://user-images.githubusercontent.com/756243/187046807-8eb0c9f1-e8ea-4644-acd8-47df5e72e2b4.png" width="200">
+<img src="https://user-images.githubusercontent.com/756243/202640802-21d0f2c5-07f6-44d7-9e57-858a6e3b5ae4.png" width="200">
 
 ## Development
 
