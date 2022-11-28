@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5O-lU-8jM">
-                                <rect key="frame" x="0.0" y="-15" width="390" height="874"/>
+                                <rect key="frame" x="0.0" y="-12" width="390" height="868"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="868" id="6Ji-hZ-uah"/>
+                                </constraints>
                             </mapView>
                             <tableView clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3wV-xi-5gN">
                                 <rect key="frame" x="80" y="83" width="228" height="120"/>
@@ -72,7 +75,7 @@
                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIw-jB-Iic">
-                                <rect key="frame" x="16.000000000000004" y="51" width="49.333333333333343" height="35"/>
+                                <rect key="frame" x="16.000000000000004" y="47" width="49.333333333333343" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system"/>
                                 <connections>
@@ -83,7 +86,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pIw-jB-Iic" firstAttribute="centerY" secondItem="WCJ-zz-Wa5" secondAttribute="centerY" constant="-693" id="6MJ-sG-1fP"/>
+                            <constraint firstItem="pIw-jB-Iic" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4PD-zm-M58"/>
                             <constraint firstItem="WCJ-zz-Wa5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="891-58-MOt"/>
                             <constraint firstItem="pIw-jB-Iic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9e0-pt-tCX"/>
                             <constraint firstItem="c5O-lU-8jM" firstAttribute="centerX" secondItem="3wV-xi-5gN" secondAttribute="centerX" id="Eax-0p-vBY"/>
